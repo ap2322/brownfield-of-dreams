@@ -25,6 +25,9 @@
     },
     "SECRET_KEY_BASE": {
       "required": true
+    },
+    "YOUTUBE_API_KEY": {
+      "required": true
     }
   },
   "formation": {
