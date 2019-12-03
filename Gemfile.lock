@@ -350,7 +350,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery
   launchy
-  listen (>= 3.0.5, < 3.2)
+  listen
   omniauth-census!
   omniauth-google-oauth2
   pg (>= 0.18, < 2.0)
