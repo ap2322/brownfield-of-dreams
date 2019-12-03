@@ -30,7 +30,7 @@ describe "An Admin can add a new tutorial" do
     click_on "Save"
 
     expect(page).to have_content("Title can't be blank and Thumbnail can't be blank")
-    expect(current_path).to eq("/tutorials/new")
+    expect(page).to have_content("New Tutorial")
   end
 
 
