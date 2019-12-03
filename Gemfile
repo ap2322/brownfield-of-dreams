@@ -22,6 +22,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'google-api-client'
 gem 'jquery'
+gem 'active_designer'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'omniauth-google-oauth2'
 gem 'will_paginate'
