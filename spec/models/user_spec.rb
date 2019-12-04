@@ -6,6 +6,11 @@ RSpec.describe User, type: :model do
     it {should validate_presence_of(:first_name)}
     it {should validate_presence_of(:password)}
   end
+  describe 'relationships' do
+    it { should have_many :user_videos }
+    it { should have_many(:videos).through(:user_videos) }
+    it { should have_many(:tutorials).through(:videos) }
+  end
 
   describe 'roles' do
     it 'can be created as default user' do
