@@ -17,6 +17,7 @@ class Admin::TutorialsController < Admin::BaseController
 
   def new
     @tutorial = Tutorial.new
+    render locals: { add_videos: false }
   end
 
   def update
