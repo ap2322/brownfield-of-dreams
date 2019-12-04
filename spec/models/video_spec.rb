@@ -12,7 +12,7 @@ RSpec.describe Video, type: :model do
     it { should belong_to :tutorial }
   end
 
-  describe 'position' do
+  describe 'callbacks' do
     it 'increments the position before creation' do
       tutorial = create(:tutorial)
       video_1 = create(:video, tutorial_id: tutorial.id)
