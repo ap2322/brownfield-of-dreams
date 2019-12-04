@@ -5,12 +5,12 @@ class Video < ApplicationRecord
 
   validates_presence_of :title, :description, :video_id, :thumbnail
 
-  after_create :check_position
+  before_create :check_position
 
   private
   def check_position
     if self.position == 0
-      self.update_attribute(:position, self.tutorial.video_count)
+      self.update_attribute(:position, self.tutorial.video_count + 1)
     end
   end
 end
