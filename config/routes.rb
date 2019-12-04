@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/auth/github/callback', to: 'users#show'
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
