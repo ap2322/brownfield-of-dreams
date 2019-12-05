@@ -14,4 +14,8 @@ describe 'user can be authenticated via github' do
     expect(page).to have_content(user.first_name)
     expect(page).to have_content(user.last_name)
   end
+
+  it 'user can see github repos' do
+    user = create(:user, token: ENV["GITHUB_TEST_"])
+  end
 end
