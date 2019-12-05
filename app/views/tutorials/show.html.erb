@@ -1,5 +1,5 @@
 <main class="tutorials">
-<% if current_user %>
+<% if (@facade.classroom == true && current_user) || @facade.classroom == false %>
   <h2><%= @facade.title %></h2>
   <h1 id="message"></h1>
   <% unless @facade.videos.empty? %>

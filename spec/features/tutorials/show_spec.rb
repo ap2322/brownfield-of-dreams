@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'tutorial show page' do
   it 'loads without videos' do
-    tutorial = create(:tutorial)
+    tutorial = create(:tutorial) 
 
     visit "/tutorials/#{tutorial.id}"
 
