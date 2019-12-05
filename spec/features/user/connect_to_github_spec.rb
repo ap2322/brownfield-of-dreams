@@ -9,7 +9,6 @@ describe 'user can be authenticated via github' do
     mock_auth = OmniAuth.config.add_mock(:github, {:uid => '12345', :credentials => {token: "importanttoken"}, :info => {nickname: 'github_name', email: 'email@mock.com'}})
 
     click_button 'Connect to Github'
-    
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content(user.email)
     expect(page).to have_content(user.first_name)
