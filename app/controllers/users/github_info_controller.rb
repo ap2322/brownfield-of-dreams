@@ -11,12 +11,17 @@ class Users::GithubInfoController < ApplicationController
       faraday.adapter Faraday.default_adapter
     end
 
-    response = conn.get("https://api.github.com/users/#{username}/repos")
+    repos = conn.get("/users/#{username}/repos")
+    repos_as_json = JSON.parse(repos.body)
 
-    repos = JSON.parse(response.body)
+    followers = conn.get("/users/#{username}/followers")
+    followers_as_json = JSON.parse(followers.body)
+
+    following = conn.get("/users/#{username}/following")
+    following_as_json = JSON.parse(following.body)
+
+
     binding.pry
-
-
 
   end
 end
