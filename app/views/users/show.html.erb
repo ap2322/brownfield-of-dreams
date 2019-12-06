@@ -15,5 +15,15 @@
       <h3>GitHub Info</h3>
       <p>GitHub Username: <%= @user_facade.username %> </p>
     </section>
+    <section class="repos">
+      <h3>User Repositories</h3>
+      <% @user_facade.repos.each_with_index do |repo, index| %>
+        <ul>
+          <li id = "repo-<%=index%>">
+            <%= link_to repo.name, repo.html_url %>
+          </li>
+        </ul>
+      <% end %>
+    </section>
   <% end %>
 </section>

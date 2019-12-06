@@ -14,6 +14,7 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data("<GITHUB_TEST_TOKEN>") { ENV['GITHUB_TEST_TOKEN'] }
 end
 
 
@@ -52,5 +53,5 @@ end
 
 def stub_omniauth
   OmniAuth.config.test_mode = true
-  OmniAuth.config.add_mock(:github, {:uid => '12345', :credentials => {token: "importanttoken"}, :info => {nickname: 'github_name'}})
+  OmniAuth.config.add_mock(:github, {:uid => '12345', :credentials => {token: ENV['GITHUB_TEST_TOKEN']}, :info => {nickname: 'github_name'}})
 end
