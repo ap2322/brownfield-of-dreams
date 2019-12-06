@@ -19,11 +19,14 @@ describe 'user can be authenticated via github' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit '/dashboard'
-    expect(page.find_all('.repos')[0]).to have_content('')
-    expect(page.find_all('.repos')[1]).to have_content('')
-    expect(page.find_all('.repos')[2]).to have_content('')
-    expect(page.find_all('.repos')[3]).to have_content('')
-    expect(page.find_all('.repos')[4]).to have_content('')
+
+    within '.repos' do
+      expect(page).to have_css("#repo-0")
+      expect(page).to have_css("#repo-1")
+      expect(page).to have_css("#repo-2")
+      expect(page).to have_css("#repo-3")
+      expect(page).to have_css("#repo-4")
+    end
 
   end
 end

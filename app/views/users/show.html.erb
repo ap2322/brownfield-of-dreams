@@ -15,9 +15,13 @@
   <% unless @user_facade.token.nil? %>
     <section class="repos">
       <h3>User Repositories</h3>
-        <% @user_facade.repos.each do |repo| %>
+      <% x = 0 %>
+        <% @user_facade.repos.each_with_index do |repo, index| %>
           <ul>
-            <li><%= link_to repo.name, repo.html_url %></li>
+            <section id = "repo-<%=index%>" >
+              <li><%= link_to repo.name, repo.html_url %></li>
+              <% x + 1 %>
+            </section>
           </ul>
         <% end %>
     </section>

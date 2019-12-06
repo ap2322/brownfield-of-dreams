@@ -10,7 +10,7 @@ class UserFacade < SimpleDelegator
 
     @repos.map do |repo|
       Repository.new(repo)
-    end
+    end[0..4]
   end
 
   def followers
