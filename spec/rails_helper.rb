@@ -49,3 +49,8 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 end
+
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.add_mock(:github, {:uid => '12345', :credentials => {token: "importanttoken"}, :info => {nickname: 'github_name'}})
+end
