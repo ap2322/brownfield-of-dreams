@@ -12,6 +12,12 @@ class GithubService
     JSON.parse(followers.body)
   end
 
+  def followings_json(token)
+    connection = conn(token)
+    followings = connection.get("/user/following")
+    JSON.parse(followings.body)
+  end
+
   private
 
   def conn(token)
