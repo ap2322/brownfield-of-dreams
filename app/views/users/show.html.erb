@@ -25,5 +25,15 @@
         </ul>
       <% end %>
     </section>
+    <section class="followers">
+      <h3>Followers</h3>
+        <% @user_facade.followers.each_with_index do |follower, index| %>
+          <ul>
+            <section id = "follower-<%=index%>" >
+              <li><%= link_to follower.handle, follower.html_url %></li>
+            </section>
+          </ul>
+        <% end %>
+    </section>
   <% end %>
 </section>
