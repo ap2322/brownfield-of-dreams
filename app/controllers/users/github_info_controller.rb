@@ -1,5 +1,7 @@
 class Users::GithubInfoController < ApplicationController
   def show
+    # per meeting with Brian just set the user_facade with new github info
+    # then redirect to /dashboard
     github_info = request.env['omniauth.auth']
     user = current_user
 
