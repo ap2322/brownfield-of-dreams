@@ -9,6 +9,7 @@ describe 'a user can add friends that are in the db' do
     following_in_db = create(:user, first_name: 'Rachel', last_name: 'Lew', username: 'rlew421')
 
     visit '/dashboard'
+
     within "#follower-1" do #alice
       click_link 'Add Friend'
     end
@@ -18,6 +19,10 @@ describe 'a user can add friends that are in the db' do
     within ".friends" do
       expect(page).to have_content('Alice Post (ap2322)')
     end
+
+    within "#follower-1" do
+      expect(page).to_not have_link('Add Friend')
+    end 
 
     within "#following-7" do #rachel
       click_link 'Add Friend'
