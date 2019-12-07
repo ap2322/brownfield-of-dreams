@@ -11,7 +11,7 @@ describe 'a user can add friends that are in the db' do
     visit '/dashboard'
 
     within "#follower-1" do #alice
-      click_link 'Add Friend'
+      click_button 'Add Friend'
     end
 
     expect(current_path).to eq('/dashboard')
@@ -22,11 +22,11 @@ describe 'a user can add friends that are in the db' do
     end
 
     within "#follower-1" do
-      expect(page).to_not have_link('Add Friend')
+      expect(page).to_not have_button('Add Friend')
     end
 
     within "#following-7" do #rachel
-      click_link 'Add Friend'
+      click_button 'Add Friend'
     end
 
     expect(page).to have_content('Friend added!')
@@ -36,7 +36,7 @@ describe 'a user can add friends that are in the db' do
     end
 
     within "#follower-0" do #john
-      expect(page).to_not have_link('Add Friend')
+      expect(page).to_not have_button('Add Friend')
     end
 
     within ".friends" do
@@ -44,7 +44,7 @@ describe 'a user can add friends that are in the db' do
     end
 
     within "#following-5" do #john
-      expect(page).to_not have_link('Add Friend')
+      expect(page).to_not have_button('Add Friend')
     end
 
     within ".friends" do
