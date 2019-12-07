@@ -1,14 +1,19 @@
 require 'rails_helper'
 
 describe 'visitor visits video show page' do
-  it 'clicks on the bookmark page and is sent to the log in page' do
-    tutorial = create(:tutorial)
+
+  it "shows tooltip for visitor not logged-in on hover to tell them they'll need to log in", :js do
+    tutorial= create(:tutorial)
     video = create(:video, tutorial_id: tutorial.id)
 
     visit tutorial_path(tutorial)
+    driver = Selenium::WebDriver.for :chrome
 
-    click_on 'Bookmark'
+    element = page.driver.browser.find_element(:css, "a#bookmark-btn")
+    page.driver.browser.action.move_to(element).perform
+    expect(page.find(".tooltip-toggle").visible?).to eq(true)
 
-    expect(current_path).to eq(login_path)
+    expect(page).to have_content("Bookmark")
+    expect(page).to_not have_link("Bookmark")
   end
 end
