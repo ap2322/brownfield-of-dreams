@@ -33,7 +33,7 @@
               <li>
                 <%= link_to follower.handle, follower.html_url %>
                 <% if follower.in_db && follower.not_friend?(@user_facade.id) %>
-                  <%= link_to 'Add Friend', friendships_path(friend_id: follower.in_db.id), method: :post %>
+                  <%= button_to 'Add Friend', friendships_path(friend_id: follower.in_db.id), method: :post %>
                 <% end %>
               </li>
             </section>
@@ -48,7 +48,7 @@
               <li>
                 <%= link_to following.handle, following.html_url %>
                 <% if following.in_db && following.not_friend?(@user_facade.id) %>
-                  <%= link_to 'Add Friend', friendships_path(friend_id: following.in_db.id), method: :post %>
+                  <%= button_to 'Add Friend', friendships_path(friend_id: following.in_db.id), method: :post %>
                 <% end %>
               </li>
             </section>
