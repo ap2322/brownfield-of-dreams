@@ -30,7 +30,12 @@
         <% @user_facade.followers.each_with_index do |follower, index| %>
           <ul>
             <section id = "follower-<%=index%>" >
-              <li><%= link_to follower.handle, follower.html_url %></li>
+              <li>
+                <%= link_to follower.handle, follower.html_url %>
+                <% if follower.in_db && follower.not_friend?(@user_facade.id) %>
+                  <%= link_to 'Add Friend', friendships_path(friend_id: follower.in_db.id), method: :post %>
+                <% end %>
+              </li>
             </section>
           </ul>
         <% end %>
@@ -40,10 +45,23 @@
         <% @user_facade.followings.each_with_index do |following, index| %>
           <ul>
             <section id = "following-<%=index%>" >
-              <li><%= link_to following.handle, following.html_url %></li>
+              <li>
+                <%= link_to following.handle, following.html_url %>
+                <% if following.in_db && following.not_friend?(@user_facade.id) %>
+                  <%= link_to 'Add Friend', friendships_path(friend_id: following.in_db.id), method: :post %>
+                <% end %>
+              </li>
             </section>
           </ul>
         <% end %>
+    </section>
+    <section class='friends'>
+      <h3>Friends</h3>
+      <% @user_facade.friendships.each do |friendship| %>
+        <ul>
+          <li> <%= friendship.friend.first_name %>  <%= friendship.friend.last_name %> (<%= friendship.friend.username  %>)  </li>
+        </ul>
+      <% end  %>
     </section>
   <% end %>
 </section>

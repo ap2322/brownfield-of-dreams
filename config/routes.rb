@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :friendships, only: [:create]
+
   get 'auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'users/github_info#show'
 
