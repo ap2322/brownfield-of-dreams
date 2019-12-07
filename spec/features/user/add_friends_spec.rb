@@ -15,6 +15,7 @@ describe 'a user can add friends that are in the db' do
     end
 
     expect(current_path).to eq('/dashboard')
+    expect(page).to have_content('Friend added!')
 
     within ".friends" do
       expect(page).to have_content('Alice Post (ap2322)')
@@ -22,11 +23,13 @@ describe 'a user can add friends that are in the db' do
 
     within "#follower-1" do
       expect(page).to_not have_link('Add Friend')
-    end 
+    end
 
     within "#following-7" do #rachel
       click_link 'Add Friend'
     end
+
+    expect(page).to have_content('Friend added!')
 
     within ".friends" do
       expect(page).to have_content('Rachel Lew (rlew421)')
