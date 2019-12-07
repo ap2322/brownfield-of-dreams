@@ -32,8 +32,8 @@
             <section id = "follower-<%=index%>" >
               <li>
                 <%= link_to follower.handle, follower.html_url %>
-                <% if follower.in_db? %>
-                  <%= link_to 'Add Friend', friendships_path %>
+                <% if follower.in_db %>
+                  <%= link_to 'Add Friend', friendships_path(friend_id: follower.in_db.id), method: :post %>
                 <% end %>
               </li>
             </section>
@@ -47,8 +47,8 @@
             <section id = "following-<%=index%>" >
               <li>
                 <%= link_to following.handle, following.html_url %>
-                <% if following.in_db? %>
-                  <%= link_to 'Add Friend', friendships_path %>
+                <% if following.in_db %>
+                  <%= link_to 'Add Friend', friendships_path(friend_id: following.in_db.id), method: :post %>
                 <% end %>
               </li>
             </section>
@@ -56,10 +56,12 @@
         <% end %>
     </section>
     <section class='friends'>
-      <% @user.friendships.each do |friendship| %>
+      <h3>Friends</h3>
+      <% @user_facade.friendships.each do |friendship| %>
         <ul>
-          <li><%= friendship.friend.first_name %> <%=friendship.friend.last_name%> <%=friendship.friend.username%></li>
+          <li> <%= friendship.friend.first_name %>  <%= friendship.friend.last_name %> (<%= friendship.friend.username  %>)  </li>
         </ul>
+      <% end  %>
     </section>
   <% end %>
 </section>
