@@ -23,7 +23,9 @@ describe 'user can be authenticated and grant acces via github' do
   it 'displays five of the users repos', :vcr do
     user = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     visit '/dashboard'
+
     within '.repos' do
       expect(page).to have_css('#repo-0')
       expect(page).to have_css('#repo-1')
@@ -34,5 +36,34 @@ describe 'user can be authenticated and grant acces via github' do
 
     expect(page.find('#repo-0')).to_not be_nil
 
+  end
+
+  it 'displays user followers', :vcr do
+    user = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit '/dashboard'
+
+    within '.followers' do
+      expect(page).to have_css("#follower-0")
+      expect(page).to have_css("#follower-1")
+    end
+    expect(page.find('#follower-0')).to_not be_nil
+  end
+
+  it 'displays user following', :vcr do
+    user = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit '/dashboard'
+
+    within '.followings' do
+      expect(page).to have_css('#following-0')
+      expect(page).to have_css('#following-1')
+      expect(page).to have_css('#following-2')
+      expect(page).to have_css('#following-3')
+      expect(page).to have_css('#following-4')
+    end
+    expect(page.find('#following-0')).to_not be_nil
   end
 end

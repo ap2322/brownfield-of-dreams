@@ -12,4 +12,22 @@ class UserFacade < SimpleDelegator
     end[0..4]
   end
 
+  def followers
+    service = GithubService.new
+    @followers ||= service.followers_json(token)
+
+    @followers.map do |follower|
+      Follower.new(follower)
+    end
+  end
+
+  def followings
+    service = GithubService.new
+    @followings ||= service.followings_json(token)
+
+    @followings.map do |following|
+      Following.new(following)
+    end
+  end
+
 end
