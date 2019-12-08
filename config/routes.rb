@@ -41,8 +41,13 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update, :edit]
 
+  # resend activation link route
   get '/users/:id/activation/new', to: 'users/activation#new', as: 'activation_new'
+
+  # link inside email body to activate account
   get '/users/:id/activation', to: 'users/activation#update', as: 'activation'
+
+  # thank you for updating
   get '/users/:id/activation/activated', to: 'users/activation#show'
 
 
