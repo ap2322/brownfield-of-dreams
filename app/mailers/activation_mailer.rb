@@ -1,7 +1,8 @@
 class ActivationMailer < ApplicationMailer
 
-  def activate
-    @user = current_user
+  def activation(user)
+    @user = user
     mail(to: @user.email, subject: 'Turing Tutorials Account Activation')
   end
+
 end
