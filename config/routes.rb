@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update, :edit]
 
+  get '/users/:id/activation/new', to: 'users/activation#new', as: 'activation_new'
   get '/users/:id/activation', to: 'users/activation#update', as: 'activation'
   get '/users/:id/activation/activated', to: 'users/activation#show'
 
