@@ -38,7 +38,12 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
 
 
+
   resources :users, only: [:new, :create, :update, :edit]
+
+  get '/users/:id/activation', to: 'users/activation#update', as: 'activation'
+  get '/users/:id/activation/activated', to: 'users/activation#show'
+
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
