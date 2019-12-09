@@ -3,8 +3,6 @@ Rails.application.configure do
   config.webpacker.check_yarn_integrity = false
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = { host: 'brownfield-ma.herokuapp.com' }
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -68,7 +66,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "personal_project_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-
+  config.action_mailer.default_url_options = { host: 'brownfield-ma.herokuapp.com' }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
