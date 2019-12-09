@@ -39,6 +39,7 @@ describe 'vister can create an account', :vcr, :js do
   end
 
   it 'visits home page to register and activate via email' do
+    current_email_count = ActionMailer::Base.deliveries.count
 
     email = 'jimbob@aol.com'
     first_name = 'Jim'
@@ -62,6 +63,10 @@ describe 'vister can create an account', :vcr, :js do
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content('Logged in as Jim')
     expect(page).to have_content('This account has not yet been activated. Please check your email.')
+
+    new_email_count = ActionMailer::Base.deliveries.count
+
+    expect(new_email_count).to eq(current_email_count + 1)
 
     last_email = ActionMailer::Base.deliveries.last
     expect(last_email.to).to include(email)
