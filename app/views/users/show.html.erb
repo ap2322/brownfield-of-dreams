@@ -14,6 +14,9 @@
     <li> <%= @user_facade.email%> </li>
   </ul>
   <section>
+    <%= link_to 'Send an Invite', '/invite' %>
+  </section>
+  <section>
     <h1>Bookmarked Segments</h1>
   </section>
   <% unless @user_facade.token.nil? %>
