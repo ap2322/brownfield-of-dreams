@@ -17,7 +17,7 @@ class UserFacade < SimpleDelegator
     @followers ||= service.followers_json(token)
 
     @followers.map do |follower|
-      Follower.new(follower)
+      GithubUser.new(follower)
     end
   end
 
@@ -26,7 +26,7 @@ class UserFacade < SimpleDelegator
     @followings ||= service.followings_json(token)
 
     @followings.map do |following|
-      Following.new(following)
+      GithubUser.new(following)
     end
   end
 
