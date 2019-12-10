@@ -6,7 +6,6 @@
     <p>This account has not yet been activated. Please check your email.</p>
     <%= link_to 'Resend activation email', activation_new_path(@user_facade) %>
   <% end %>
-  <%= link_to 'Send Invite', '/invite' %>
   <%= button_to 'Connect to GitHub', github_login_path %>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
@@ -18,6 +17,7 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <% unless @user_facade.token.nil? %>
+  <%= link_to 'Send Invite', '/invite', class:"mt2 btn btn-primary mb1 bg-teal" %>
     <section class="github_info">
       <h3>GitHub Info</h3>
       <p>GitHub Username: <%= @user_facade.username %> </p>
