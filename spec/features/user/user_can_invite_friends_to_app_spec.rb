@@ -1,15 +1,12 @@
 require 'rails_helper'
 
 
-describe 'user can invite friends' do
+describe 'user can invite friends', :vcr do
   before(:each) do
     ActionMailer::Base.deliveries = []
   end
 
   it 'invite link from dashboard sends email invite' do
-    WebMock.enable_net_connect!
-    VCR.eject_cassette
-    VCR.turn_off!(ignore_cassettes: true)
     user_1 = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
@@ -29,9 +26,6 @@ describe 'user can invite friends' do
     expect(page).to have_content('Successfully sent invite!')
   end
   it 'invite link from dashboard will not send email if github user does not have email' do
-    WebMock.enable_net_connect!
-    VCR.eject_cassette
-    VCR.turn_off!(ignore_cassettes: true)
     user_1 = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
