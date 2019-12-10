@@ -56,7 +56,7 @@ describe 'a user can add friends that are in the db' do
     user = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    page.driver.post(friendships_path(23525))
+    page.driver.post(friendships_path('erhgtr'))
 
     expect(Friendship.all).to eq([])
   end
