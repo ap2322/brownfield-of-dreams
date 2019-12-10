@@ -3,6 +3,13 @@ class UserFacade < SimpleDelegator
     super(user)
   end
 
+  def tutorial_user_video_hash
+    user_videos.tutorial_sort.each_with_object({}) do |user_video, hash|
+      hash[user_video.tutorial_title] ||= []
+      hash[user_video.tutorial_title] << user_video
+    end
+  end
+
   def repos
     service = GithubService.new
     @repos ||= service.repos_json(token)

@@ -13,8 +13,18 @@
     <li> <%= @user_facade.first_name  %> <%= @user_facade.last_name %> </li>
     <li> <%= @user_facade.email%> </li>
   </ul>
-  <section>
+  <section class='bookmarks'>
     <h1>Bookmarked Segments</h1>
+      <% @user_facade.tutorial_user_video_hash.each do |tutorial_title, user_video_array| %>
+        <ul>
+          <li class='tutorial'><%= tutorial_title  %></li>
+            <% user_video_array.each do |user_video| %>
+            <ul>
+              <li class='video' id='video-<%= user_video.video_id %>'><%= user_video.video.title %></li>
+            </ul>
+            <% end %>
+        </ul>
+      <% end %>
   </section>
   <% unless @user_facade.token.nil? %>
   <%= link_to 'Send Invite', '/invite', class:"mt2 btn btn-primary mb1 bg-teal" %>
