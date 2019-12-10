@@ -41,7 +41,7 @@ describe 'user can invite friends' do
 
     expect(current_path).to eq('/invite')
 
-    fill_in 'Github_handle', with: 'johnktravers'
+    fill_in 'Github handle', with: 'johnktravers'
     click_on 'Send Invite'
 
     expect(ActionMailer::Base.deliveries).to eq([])
