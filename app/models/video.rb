@@ -8,6 +8,7 @@ class Video < ApplicationRecord
   before_create :check_position
 
   private
+
   def check_position
     if self.position == 0
       self.update_attribute(:position, self.tutorial.video_count + 1)

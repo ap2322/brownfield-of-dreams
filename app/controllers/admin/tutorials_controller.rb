@@ -29,7 +29,6 @@ class Admin::TutorialsController < Admin::BaseController
 
   private
 
-
   def tutorial_params
     params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
   end
