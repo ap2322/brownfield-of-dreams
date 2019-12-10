@@ -6,7 +6,7 @@
     <p>This account has not yet been activated. Please check your email.</p>
     <%= link_to 'Resend activation email', activation_new_path(@user_facade) %>
   <% end %>
-  <%= button_to 'Connect to GitHub', github_login_path %>
+  <%= button_to 'Connect to GitHub', github_login_path, class: "btn btn-outline mb1 aqua" %>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
