@@ -20,12 +20,12 @@ describe 'user can see bookmarked segments on dashboard' do
 
     within '.bookmarks' do
       expect(page).to have_content("How to Tie Your Shoes")
-      expect(page.find_all('.video')[0]).to have_content('The Bunny Ears Technique')
-      expect(page.find_all('.video')[1]).to have_content('Loop Around')
+      expect(page.find_all('.video-bookmarks')[0]).to have_content('The Bunny Ears Technique')
+      expect(page.find_all('.video-bookmarks')[1]).to have_content('Loop Around')
 
       expect(page).to have_content("Eating Ice Cream")
-      expect(page.find_all('.video')[2]).to have_content('Banana Split')
-      expect(page.find_all('.video')[3]).to have_content('Fudge Explosion')
+      expect(page.find_all('.video-bookmarks')[2]).to have_content('Banana Split')
+      expect(page.find_all('.video-bookmarks')[3]).to have_content('Fudge Explosion')
     end
   end
 end
