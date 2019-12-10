@@ -1,5 +1,4 @@
 class Users::ActivationController < ApplicationController
-
   def update
     user = User.find(params[:id])
     user.toggle!(:active?)
@@ -16,5 +15,4 @@ class Users::ActivationController < ApplicationController
 
     redirect_to '/dashboard'
   end
-
 end

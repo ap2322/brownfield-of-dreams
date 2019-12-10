@@ -29,5 +29,4 @@ class UserFacade < SimpleDelegator
       GithubUser.new(following)
     end
   end
-
 end

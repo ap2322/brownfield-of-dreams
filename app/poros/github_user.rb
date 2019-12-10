@@ -9,7 +9,7 @@ class GithubUser
   end
 
   def in_db
-    User.find_by(username: handle )
+    User.find_by(username: handle)
   end
 
   def not_friend?(user_id)
