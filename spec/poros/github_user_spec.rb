@@ -1,13 +1,6 @@
 require 'rails_helper'
 
-
 describe GithubUser do
-  #validate attributes on things not in db?
-  # describe 'validations' do
-  #   it { should validate_presence_of :handle }
-  #   it { should validate_presence_of :html_url }
-  # end
-
   describe 'attributes' do
     it 'has attributes' do
       github_user = GithubUser.new({'login' => 'tre23', 'html_url' => 'github.com/tre23'})
