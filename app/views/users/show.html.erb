@@ -1,5 +1,11 @@
 <section class="dashboard-main">
   <h1> <%= @user_facade.first_name %>'s Dashboard </h1>
+  <% if @user_facade.active? %>
+    <p>Status: Active</p>
+  <% else %>
+    <p>This account has not yet been activated. Please check your email.</p>
+    <%= link_to 'Resend activation email', activation_new_path(@user_facade) %>
+  <% end %>
   <%= button_to 'Connect to GitHub', github_login_path %>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>

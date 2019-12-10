@@ -35,7 +35,7 @@ describe 'User' do
 
     expect(current_path).to eq(dashboard_path)
 
-    click_on 'Log Out'
+    click_button 'Log Out'
 
     expect(current_path).to eq(root_path)
     expect(page).to_not have_content(user.first_name)

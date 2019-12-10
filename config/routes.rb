@@ -38,7 +38,18 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
 
 
+
   resources :users, only: [:new, :create, :update, :edit]
+
+  # resend activation link route
+  get '/users/:id/activation/new', to: 'users/activation#new', as: 'activation_new'
+
+  # link inside email body to activate account
+  get '/users/:id/activation', to: 'users/activation#update', as: 'activation'
+
+  # thank you for updating
+  get '/users/:id/activation/activated', to: 'users/activation#show'
+
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
