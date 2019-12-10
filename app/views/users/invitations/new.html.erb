@@ -1,0 +1,9 @@
+<h1>Invite a Friend to Join</h1>
+
+<%= form_for :invitation do |f| %>
+  <div >
+    <%= f.label :github_handle %>
+    <%= f.text_field :github_handle, class: "block col-12 field" %>
+  </div>
+  <%= f.submit 'Send Invite', class: "mt2 btn btn-primary mb1 bg-teal" %>
+<% end %>

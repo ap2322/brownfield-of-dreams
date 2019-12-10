@@ -18,6 +18,13 @@ class GithubService
     JSON.parse(followings.body)
   end
 
+  def friend_json(handle, token)
+    connection = conn(token)
+    friend = connection.get("/users/#{handle}")
+
+    JSON.parse(friend.body)
+  end
+
   private
 
   def conn(token)

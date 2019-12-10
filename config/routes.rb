@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/invite', to: 'users/invitations#new'
+  post '/invite', to: 'users/invitations#create'
+
   resources :friendships, only: [:create]
 
   get 'auth/github', as: 'github_login'

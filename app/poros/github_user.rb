@@ -1,9 +1,11 @@
 class GithubUser
-  attr_reader :handle, :html_url
+  attr_reader :handle, :html_url, :name, :email
 
   def initialize(info)
+    @name = info['name']
     @handle = info['login']
     @html_url = info['html_url']
+    @email = info['email']
   end
 
   def in_db
