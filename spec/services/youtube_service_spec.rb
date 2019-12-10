@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'GitHubService makes successful api calls' do
+describe 'YouTube service successfully makes api call' do
   it 'can make a json of video', :vcr do
     service = YoutubeService.new
     video = service.video_info(1)
