@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "An Admin can add a new tutorial" do
   let(:admin)    { create(:admin) }
 
-  scenario "by visiting admin/tutorials/new", :js, :vcr do
+  scenario "can add tutorial without video", :js, :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit new_admin_tutorial_path
