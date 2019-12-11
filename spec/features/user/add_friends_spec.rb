@@ -51,4 +51,13 @@ describe 'a user can add friends that are in the db' do
       expect(page).to_not have_content('johnktravers')
     end
   end
+
+  it 'cannot add friend not in db' do
+    user = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    page.driver.post(friendships_path('erhgtr'))
+
+    expect(Friendship.all).to eq([])
+  end
 end
