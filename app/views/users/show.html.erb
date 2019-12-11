@@ -6,7 +6,13 @@
     <p>This account has not yet been activated. Please check your email.</p>
     <%= link_to 'Resend activation email', activation_new_path(@user_facade) %>
   <% end %>
-  <%= button_to 'Connect to GitHub', github_login_path %>
+  <% if @user_facade.token.nil? %>
+    <%= button_to 'Connect to GitHub', github_login_path, class: "btn btn-outline mb1 aqua" %>
+  <% else %>
+    <br>
+    <%= link_to 'Send Invite', '/invite', class:"btn btn-outline mb1 aqua" %>
+  <% end %>
+  <br>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
@@ -17,19 +23,18 @@
     <h1>Bookmarked Segments</h1>
       <% @user_facade.tutorial_user_video_hash.each do |tutorial_title, user_video_array| %>
         <ul>
-          <li class='tutorial'><%= tutorial_title  %></li>
+          <li class='tutorial-bookmarks'><%= tutorial_title  %></li>
             <% user_video_array.each do |user_video| %>
             <ul>
-              <li class='video' id='video-<%= user_video.video_id %>'><%= user_video.video.title %></li>
+              <li class='video-bookmarks' id='video-<%= user_video.video_id %>'><%= user_video.video.title %></li>
             </ul>
             <% end %>
         </ul>
       <% end %>
   </section>
   <% unless @user_facade.token.nil? %>
-  <%= link_to 'Send Invite', '/invite', class:"mt2 btn btn-primary mb1 bg-teal" %>
     <section class="github_info">
-      <h3>GitHub Info</h3>
+      <h1>GitHub Info</h1>
       <p>GitHub Username: <%= @user_facade.username %> </p>
     </section>
     <section class="repos">
