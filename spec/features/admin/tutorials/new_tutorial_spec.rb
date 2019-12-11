@@ -33,10 +33,7 @@ describe "An Admin can add a new tutorial" do
     expect(page).to have_content("New Tutorial")
   end
 
-  scenario 'Ad admin can add a new tutorial with a video' do
-    WebMock.enable_net_connect!
-    VCR.eject_cassette
-    VCR.turn_off!(ignore_cassettes: true)
+  scenario 'Ad admin can add a new tutorial with a video', :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit new_admin_tutorial_path
