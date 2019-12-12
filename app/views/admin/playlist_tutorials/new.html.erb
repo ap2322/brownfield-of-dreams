@@ -1,0 +1,9 @@
+<h1>Import YouTube Playlist</h1>
+
+<%= form_for :playlist_tutorials do |f| %>
+  <%= f.label :playlist_id %>
+  <%= f.text_field :playlist_id, class: 'block col-4 field' %>
+
+  <%= f.submit 'Save', class: "mt2 btn btn-primary mb1 bg-teal" %>
+
+<% end %>

@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       resources :videos, only: [:create]
     end
 
+    get 'playlist_tutorials/new', to: 'playlist_tutorials#new'
+    post 'playlist_tutorials/new', to: 'playlist_tutorials#create'
+
     namespace :api do
       namespace :v1 do
         put "tutorial_sequencer/:tutorial_id", to: "tutorial_sequencer#update"
