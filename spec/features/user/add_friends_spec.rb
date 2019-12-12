@@ -80,5 +80,12 @@ describe 'a user can add friends that are in the db' do
     page.driver.post(friendships_path(friend_id: follower_in_db.id))
 
     expect(Friendship.all).to_not be_empty
+    expect(GithubUser.all.length).to eq(4652)
+
+    user2 = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user2)
+    visit '/dashboard'
+
+    expect(GithubUser.all.length).to eq(0)
   end
 end
