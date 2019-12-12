@@ -27,7 +27,7 @@ describe 'a user can add friends that are in the db', :vcr do
     visit '/dashboard'
 
     expect(user2.user_followers).to_not eq([])
-    expect(user2.user_followers).to eq(["ALDENCO", "Kerstimcgee", "Jonpatt92", "mcat56"])
+    expect(user2.user_followers).to eq(["johnktravers", "ap2322"])
 
   end
 
@@ -37,6 +37,6 @@ describe 'a user can add friends that are in the db', :vcr do
     visit '/dashboard'
 
     expect(user2.user_followings).to_not eq([])
-    expect(user2.user_followings).to eq(["Kerstimcgee", "hillstew", "mcat56"])
+    expect(user2.user_followings).to eq(["erinxocon", "CoopTang", "ap2322", "lrs8810", "brianabowers1", "johnktravers", "rhantak", "rlew421", "grwthomps"])
   end
 end

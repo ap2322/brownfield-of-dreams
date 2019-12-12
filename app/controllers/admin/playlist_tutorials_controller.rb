@@ -16,6 +16,8 @@ class Admin::PlaylistTutorialsController < ApplicationController
 
     if tutorial.save
       make_videos(tutorial)
+      binding.pry
+      flash[:success] = "Successfully created tutorial."
     end
   end
 
@@ -31,7 +33,6 @@ class Admin::PlaylistTutorialsController < ApplicationController
         position: video_info[:snippet][:position]
         })
     end
-    binding.pry
   end
 
   private
