@@ -53,11 +53,32 @@ describe 'a user can add friends that are in the db' do
   end
 
   it 'cannot add friend not in db' do
+    WebMock.enable_net_connect!
+    VCR.eject_cassette
+    VCR.turn_off!(ignore_cassettes: true)
     user = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    page.driver.post(friendships_path('erhgtr'))
+    page.driver.post(friendships_path(friend_id: 'erhgtr'))
 
     expect(Friendship.all).to eq([])
+  end
+
+  it 'cannot add friend who is not a follower', :vcr do
+    user = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    follower_in_db = create(:user,first_name: 'Alice', last_name: 'Post', username: 'ap2322')
+    following_in_db = create(:user, first_name: 'Rachel', last_name: 'Lew', username: 'rlew421')
+    non_follower_in_db = create(:user, first_name: 'Sam', last_name: 'Gamgee', username: 'swb34')
+
+    visit '/dashboard'
+
+    page.driver.post(friendships_path(friend_id: non_follower_in_db.id))
+
+    expect(Friendship.all).to eq([])
+
+    page.driver.post(friendships_path(friend_id: follower_in_db.id))
+
+    expect(Friendship.all).to_not be_empty
   end
 end
