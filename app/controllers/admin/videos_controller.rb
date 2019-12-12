@@ -12,6 +12,7 @@ class Admin::VideosController < Admin::BaseController
   end
 
   def new
+    @tutorial = Tutorial.new
   end
 
   private

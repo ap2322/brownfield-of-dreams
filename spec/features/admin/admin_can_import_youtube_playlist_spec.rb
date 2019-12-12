@@ -14,7 +14,7 @@
 # And the order should be the same as it was on YouTube
 require 'rails_helper'
 
-describe 'Admin can import a youtube playlist from tutorials new page' do
+describe 'Admin can import a youtube playlist from tutorials new page', :vcr do
   xit 'has link to import youtube playlist' do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
