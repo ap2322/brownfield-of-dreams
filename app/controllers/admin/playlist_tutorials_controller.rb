@@ -16,7 +16,7 @@ class Admin::PlaylistTutorialsController < ApplicationController
 
     if tutorial.save
       make_videos(tutorial)
-      binding.pry
+      link = "<a href='/tutorials/'"
       flash[:success] = "Successfully created tutorial."
     end
   end
