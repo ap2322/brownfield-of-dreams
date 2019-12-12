@@ -1,5 +1,7 @@
 <h2>New Tutorial</h2>
 
+<%= link_to 'Import YouTube Playlist', '/admin/playlist_tutorials/new' %>
+
 <%= form_for [:admin, @tutorial] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title, class: "block col-4 field" %>
