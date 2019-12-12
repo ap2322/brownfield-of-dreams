@@ -16,10 +16,14 @@ class Admin::PlaylistTutorialsController < ApplicationController
 
     if tutorial.save
       make_videos(tutorial)
-      link = "<a href='/tutorials/'"
-      flash[:success] = "Successfully created tutorial."
+      flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here', tutorial_url(tutorial))}."
+    else
+      flash[:error] = 'Unable to create tutorial.'
     end
+    redirect_to '/admin/dashboard'
   end
+
+
 
   def make_videos(tutorial)
     service = YoutubeService.new
