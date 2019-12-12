@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/playlists?id=%7B%22playlist_id%22=%3E%22PL1Y67f0xPzdOty2NDYKTRtxeoxvW1mAXu%22%7D&key=<YOUTUBE_API_KEY>&part=snippet
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Thu, 12 Dec 2019 18:12:38 GMT
+      Date:
+      - Thu, 12 Dec 2019 18:12:38 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"j6xRRd8dTPVVptg711_CSPADRfg/ewwRz0VbTYpp2EGbOkvZ5M_1mbo"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+         "kind": "youtube#playlistListResponse",
+         "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/ewwRz0VbTYpp2EGbOkvZ5M_1mbo\"",
+         "pageInfo": {
+          "totalResults": 0,
+          "resultsPerPage": 5
+         },
+         "items": []
+        }
+    http_version: 
+  recorded_at: Thu, 12 Dec 2019 18:12:15 GMT
+recorded_with: VCR 5.0.0
