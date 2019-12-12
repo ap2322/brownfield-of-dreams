@@ -7,7 +7,7 @@ class Friendship < ApplicationRecord
   end
 
   def github_connection?(user, friend_id)
-    friend_handle = User.find(friend_id)
-    user.user_followers.include?(friend_handle.username) && user.user_followings.include?(friend_handle.username)
+    friend = User.find(friend_id)
+    user.user_followers.include?(friend.username) || user.user_followings.include?(friend.username)
   end
 end
