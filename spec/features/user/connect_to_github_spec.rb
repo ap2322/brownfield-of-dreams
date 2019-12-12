@@ -61,8 +61,6 @@ describe 'user can be authenticated and grant acces via github' do
       expect(page).to have_css('#following-0')
       expect(page).to have_css('#following-1')
       expect(page).to have_css('#following-2')
-      expect(page).to have_css('#following-3')
-      expect(page).to have_css('#following-4')
     end
     expect(page.find('#following-0')).to_not be_nil
   end

@@ -52,10 +52,7 @@ describe 'a user can add friends that are in the db' do
     end
   end
 
-  it 'cannot add friend not in db' do
-    WebMock.enable_net_connect!
-    VCR.eject_cassette
-    VCR.turn_off!(ignore_cassettes: true)
+  it 'cannot add friend not in db', :vcr do
     user = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
