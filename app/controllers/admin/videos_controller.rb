@@ -10,7 +10,7 @@ class Admin::VideosController < Admin::BaseController
 
     redirect_to edit_admin_tutorial_path(id: params[:tutorial_id])
   end
-  
+
   private
 
   def new_video_params
