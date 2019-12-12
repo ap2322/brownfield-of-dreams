@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   def user_followers
     return [] unless token
+
     facade = UserFacade.new(self)
     facade.followers.map do |follower|
       follower.handle
@@ -20,6 +21,7 @@ class User < ApplicationRecord
 
   def user_followings
     return [] unless token
+    
     facade = UserFacade.new(self)
     facade.followings.map do |follower|
       follower.handle
