@@ -14,29 +14,29 @@ describe 'a user can add friends that are in the db', :vcr do
     expect(Friendship.all).to eq([])
   end
 
-  scenario 'user starts with no followers' do
+  scenario 'user starts with no followers', :vcr do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit '/dashboard'
     expect(user.user_followers).to eq([])
   end
 
-  scenario 'user with followers has an array of follower handles' do
+  scenario 'user with followers has an array of follower handles', :vcr do
     user2 = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user2)
     visit '/dashboard'
 
     expect(user2.user_followers).to_not eq([])
-    expect(user2.user_followers).to eq(["johnktravers", "ap2322"])
+    expect(user2.user_followers).to eq(["ALDENCO", "Kerstimcgee", "Jonpatt92", "mcat56"])
 
   end
 
-  scenario 'user with followings has an array of followings handle' do
+  scenario 'user with followings has an array of followings handle', :vcr do
     user2 = create(:user, token: ENV['GITHUB_TEST_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user2)
     visit '/dashboard'
 
     expect(user2.user_followings).to_not eq([])
-    expect(user2.user_followings).to eq(["erinxocon", "CoopTang", "ap2322", "lrs8810", "brianabowers1", "johnktravers", "rhantak", "rlew421", "grwthomps"])
+    expect(user2.user_followings).to eq(["Kerstimcgee", "hillstew", "mcat56"])
   end
 end
